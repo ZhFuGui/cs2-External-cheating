@@ -1,0 +1,55 @@
+﻿  GetDistance.cpp
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetDistance.cpp(3,15): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetDistance.cpp(7,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetDistance.cpp(11,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  GetProcessPidByName.cpp
+  Main.cpp
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(24,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(25,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(26,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(27,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(28,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(29,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(55,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(56,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(57,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(58,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(59,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\GetPlayerList.h(60,1): warning C4305: “=”: 从“double”到“float”截断
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(34,36): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [7]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(34,36): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(46,27): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [7]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(46,27): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(48,34): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [7]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(48,34): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(77,23): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [5]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(77,23): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(78,23): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [5]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(78,23): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(79,23): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [5]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(79,23): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(80,23): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [5]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(80,23): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(81,23): error C2664: “HWND CreateWindowExW(DWORD,LPCWSTR,LPCWSTR,DWORD,int,int,int,int,HWND,HMENU,HINSTANCE,LPVOID)”: 无法将参数 2 从“const char [5]”转换为“LPCWSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(81,23): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(4432,1): message : 参见“CreateWindowExW”的声明
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(141,70): error C2664: “HICON LoadIconA(HINSTANCE,LPCSTR)”: 无法将参数 2 从“LPWSTR”转换为“LPCSTR”
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\Main.cpp(141,43): message : 与指向的类型无关；强制转换要求 reinterpret_cast、C 样式强制转换或函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(10667,1): message : 参见“LoadIconA”的声明
+  Pause.cpp
+  RandomClan.cpp
+C:\Users\22893\source\repos\窗口版CS读写\窗口版CS读写\RandomClan.cpp(60,74): warning C4267: “参数”: 从“size_t”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+  StringTypesFlow.cpp
+  GetCurrentMap.cpp
+  正在生成代码...
