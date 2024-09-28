@@ -25,6 +25,8 @@
 #define ANGLE_SIN_Horizontal_Offset 0X12E4
 #define ANGLE_SIN_Vertical_Offset 0X12E8
 
+#define ANGLE_Vertical_Offset 0X119C
+#define ANGLE_Horizontal_Offset 0X11A0
 
 #define X_Speed_Offset 0X1428
 #define Y_Speed_Offset 0X142C

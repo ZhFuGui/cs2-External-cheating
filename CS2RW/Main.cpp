@@ -1,8 +1,10 @@
+#include "GlobalV.h"
 #include <Windows.h>
 #include <iostream>
 #include <CommCtrl.h>
 #include "StringUtil/StringTypesFlow.h"
 #include "Define/Definition.h"
+#include "Offset/Offset.h"
 #include "AutoAim/AutoAimSetting.h"
 #include "AutoAim/AutoAimTarget.h"
 #include "resource.h"
@@ -225,6 +227,7 @@ LRESULT CALLBACK Wndproc(
 					AutoAim_Button_Switch = TRUE;
 					SetDlgItemTextW(hwnd, 0x1000, L"自瞄(开启)");
 					Auto_Aim_handle = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Auto_Aim, 0, 0, 0); if (Auto_Aim_handle != 0) { CloseHandle(Auto_Aim_handle); };
+					test_handle=CreateThread(0, 0, (LPTHREAD_START_ROUTINE)test, 0, 0, 0); if (Auto_Aim_handle != 0) { CloseHandle(Auto_Aim_handle); };
 				}
 				else {
 					MessageBoxW(hwnd, L"未进入到对局中", L"错误", MB_APPLMODAL);
@@ -340,6 +343,7 @@ int WINAPI WinMain(
 	GetExeStatus_handle = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GetExeStatus, 0, 0, &GetExeStatus_ThreadId);
 	GetGameModelStatus_handle = CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GetGameModelStatus, 0, 0, &GetGameModelStatus_ThreadId);
 	CreateThread(0, 0, (LPTHREAD_START_ROUTINE)GetPlayerList, 0, 0, 0);
+	
 
 	//创建
 	HWND MyWindow = CreateWindowExW(
@@ -468,7 +472,7 @@ DWORD WINAPI GetPlayerList() {
 			else {
 				PeopleMultiple = 1;
 			}
-			for (int i = 0; i < MaxNum_PeopleOnline; i++) {
+			for (int i = 0; i < MaxNum_PeopleOnline*2; i++) {
 				player = GetEveryPlayer(player, ClientModuleAddress, GameProcess, i);
 				player.distance = GetDistance_3D_M_4(player.Head_x, Localplayer.Head_x, player.Head_y, Localplayer.Head_y, player.Head_z, Localplayer.Head_z);
 				if (player.state == 512 && player.HP > 0 && player.HP <= 100) {
@@ -480,7 +484,8 @@ DWORD WINAPI GetPlayerList() {
 			};
 			
 			AllPlayerNum = AllPlayerNums;
-
+			//test
+			index_Player_LowestDistance_InMain = GetPlayer_LowestDistance(AllPlayerArray, AllPlayerNum, Localplayer, AimAtTheEnemy); if (index_Player_LowestDistance_InMain == -1) { PauseMs(800); continue; }
 			//Pause(1);
 		}
 		else {
@@ -548,19 +553,13 @@ DWORD WINAPI ReportPositions() {
 	};
 };
 //获取了人物列表就开始自瞄，需要不论是谁，直接操作；敌方，那么令第一个敌方下标为最近，经历一个for循环之后，得到下标，瞄准。
-DWORD WINAPI Auto_Aim() {
+DWORD WINAPI Auto_Aim() noexcept{
 	while (1) {
-		StartTime = NowTime();
-		pausetime = 1600;
-		if (AllPlayerNum > 10) {
-			pausetime = 6500;
-		}
-		double rateofspeed = double(DuringTime)*0.000004;
 		//关闭函数
 		if (!AutoAim_Button_Switch) { PauseMs(20); if (!AutoAim_Button_Switch) { ExitThread(0); } };
 		//判定自瞄条件
-		if (GameStatus == FALSE || GameStatusInfoS.MapStatus == 0 || AllPlayerNum <= 0 || IFCS2FocalPoint == FALSE|| GameStatusInfoS.InGameScreen==FALSE ) { continue; };
-		//if (AutoAimSetting.HotKey != 无自瞄热键) { if (!(GetAsyncKeyState(AutoAimSetting.HotKey) & 0x8000)) { continue; }; };
+		if (GameStatus == FALSE || GameStatusInfoS.MapStatus == 0 || AllPlayerNum <= 0  ) { continue; };
+		
 		//进入自瞄环节，这个环节有自瞄模式判定
 		switch (Auto_Aim_Object) {
 		case UNKNOWN: {
@@ -571,16 +570,8 @@ DWORD WINAPI Auto_Aim() {
 			switch (Auto_Aim_Model)
 			{
 			case AimByDistance: {
-				PauseUs(pausetime);
-				index_Player_LowestDistance_InMain = GetPlayer_LowestDistance(AllPlayerArray, AllPlayerNum, Localplayer, AimAtTheEnemy); if (index_Player_LowestDistance_InMain == -1) { PauseMs(800); continue; }
-				if (AllPlayerArray[index_Player_LowestDistance_InMain].HP && AllPlayerArray[index_Player_LowestDistance_InMain].HP > 0 && AllPlayerArray[index_Player_LowestDistance_InMain].HP <= 100 && AllPlayerArray[index_Player_LowestDistance_InMain].state == 512) {
-
-					
-					
-					AutoAim::UpAngleData(IniSelfVeiwAngleTarget,Localplayer.Angle_H, Localplayer.Angle_V, Localplayer.Head_x, Localplayer.Head_y, Localplayer.Head_z, IniTargetCoor.x, IniTargetCoor.y, IniTargetCoor.z);
-					mouse_event(MOUSEEVENTF_MOVE, (IniSelfVeiwAngleTarget.HorizontalAngle) * (45.0 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), (IniSelfVeiwAngleTarget.VerticalAngle) * (45.0 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), 0, 0);
-					
-				}
+				index_Player_LowestDistance_InMain = GetPlayer_LowestDistance(AllPlayerArray, AllPlayerNum, Localplayer, AimAtTheEnemy); if (index_Player_LowestDistance_InMain == -1) { PauseMs(800); continue; }	
+					AutoAim::UpTargetData(IniTarget, index_Player_LowestDistance_InMain);
 				break;
 			}
 			default:
@@ -598,3 +589,22 @@ DWORD WINAPI Auto_Aim() {
 	};
 	return 0;
 };
+
+DWORD WINAPI test() noexcept {
+	while (1) {	
+		//关闭函数
+		if (!AutoAim_Button_Switch) { PauseMs(20); if (!AutoAim_Button_Switch) { ExitThread(0); } };
+		if (GameStatus == FALSE || GameStatusInfoS.MapStatus == 0 || AllPlayerNum <= 0 || IFCS2FocalPoint == FALSE || GameStatusInfoS.InGameScreen == FALSE) { continue; };
+		if (AutoAim::AutoAimSetting.HotKey != 无自瞄热键) { if (!(GetAsyncKeyState(AutoAim::AutoAimSetting.HotKey) & 0x8000)) { continue; }; };
+		PauseUs(1000);
+		
+		if (AllPlayerArray[index_Player_LowestDistance_InMain].HP && AllPlayerArray[index_Player_LowestDistance_InMain].HP > 0 && AllPlayerArray[index_Player_LowestDistance_InMain].HP <= 100 && AllPlayerArray[index_Player_LowestDistance_InMain].state == 512) {
+			mouse_event(MOUSEEVENTF_MOVE, (IniTarget.HorizontalAngle) * (20 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), (IniTarget.VerticalAngle) * (20 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), 0, 0);
+			//mouse_event(MOUSEEVENTF_MOVE, (IniTarget.HorizontalAngle) * (45.0 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), (IniTarget.VerticalAngle) * (45.0 / GetMouseSenvitivity(GameProcess, ClientModuleAddress)), 0, 0);
+		}
+
+	};
+	return 0;
+};
+
+

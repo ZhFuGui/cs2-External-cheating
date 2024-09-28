@@ -1,12 +1,7 @@
 #pragma once
 //#include "Player/GetPlayerList.h"
 #include "GameInfo/GetGameStatus.h"
-//版本信息
-BOOL VersionCheck=1;
-//获取CS2.exe进程句柄
-DWORD GamePid = 0;
-HANDLE GameProcess = 0;
-char GameFile[MAX_PATH]="Hello, CS2!";
+
 //UI
 HWND TestGameEnvironment_Button_hwnd; BOOL TestGameEnvironment;
 HWND AutoAim_Button_hwnd; BOOL AutoAim_Button_Switch;
@@ -58,14 +53,8 @@ HANDLE GetExeStatus_handle=0;
 DWORD GetExeStatus_ThreadId =0;
 BOOL GetExeStatus_switch=TRUE;
 BOOL GameStatus = FALSE;
-//模块地址
-HMODULE ClientModuleAddress=0;
-HMODULE Engine2ModuleAddress=0;
-HMODULE MatchmakingModuleAddress=0;
-HMODULE ServerModuleAddress = 0; 
-HMODULE SDL3ModuleAddress = 0;
-//全局窗口句柄
-HWND g_HWND=0;
+
+
 //地图地址
 //游戏状态线程函数
 GameStatusInfo GameStatusInfoS;
@@ -77,10 +66,9 @@ int PeopleMultiple = 1;
 DWORD CurrentMapStatus=0;
 //获得人物列表线程函数
 DWORD WINAPI GetPlayerList();
-//我的信息
-LPVOID Localplayer_Address;
+
 //结构体
-SLocalPlayer Localplayer; Player player; Player EnemyArray[10]; Player AllyArray[10]; Player AllPlayerArray[19]; Player InitialPlayer;
+Player player; Player EnemyArray[10]; Player AllyArray[10]; Player AllPlayerArray[19]; Player InitialPlayer;
 int EnemyNum; int AllyNum; int AllPlayerNum;
 //报点线程
 DWORD WINAPI ReportPositions();
@@ -92,7 +80,7 @@ int ReportPositionHeight = 0;
 BOOL IFCS2FocalPoint = FALSE;
 std::string FocWinTitle;
 //自瞄相关
-DWORD WINAPI Auto_Aim();
+DWORD WINAPI Auto_Aim()noexcept;
 BOOL Auto_Aim_Stop = FALSE;
 HANDLE Auto_Aim_handle;
 DWORD Auto_Aim_Model = AimByAngle;
@@ -113,6 +101,9 @@ BOOL POP = 0;
 BOOL temp = 0;
 
 
+//测试线程
+DWORD WINAPI test()noexcept;
+HANDLE test_handle;
 
 
 

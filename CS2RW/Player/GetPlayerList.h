@@ -29,7 +29,7 @@ struct SLocalPlayer {
 		this->Camp = 0;
 		this->state = 0;
 	}
-};
+}Localplayer;
 struct Player {
 	int Ini_Index;
 	int BulletsLeft;
@@ -79,7 +79,7 @@ struct Player GetEveryPlayer(Player Player, HMODULE ClientModuleAddress, HANDLE 
 
 
 	long long NextAddress; long long NextNextAddress;
-
+	Player.Ini_Index = i;
 	ReadProcessMemory(hProcess, (void*)((long long)ClientModuleAddress+NEW_LIST_PLAYER_Offset), &NextAddress, 8, 0);
 
 	ReadProcessMemory(hProcess, (void*)(NextAddress+(i*0x8)), &NextNextAddress, 8, 0);
@@ -127,7 +127,7 @@ struct SLocalPlayer GetLocalPlayer(SLocalPlayer LocalPlayer, LPVOID Localplayer_
 	ReadProcessMemory(hProcess, (void*)(NextAddress + Sensitivity_Mouse_Second_Offset), &LocalPlayer.Sensitivity_Mouse, 4, 0);
 
 	return LocalPlayer;
-}
+};
 
 
 int index_Player_LowestHP = 0; int i;
@@ -147,9 +147,7 @@ int GetPlayer_LowestHP(Player EnemyArray[], int EnemyNum) {
 
 
 
-long long GetEveryPlayerOffset(int i) {
-	return (LIST_PLAYER_Offset + ((i) * (0x8)));
-}
+
 
 int index_Player_LowestDistance = 0;
 int GetPlayer_LowestDistance(Player Array[], int Num, SLocalPlayer LocalPlayer,DWORD Way) {
@@ -183,12 +181,12 @@ int GetPlayer_LowestDistance(Player Array[], int Num, SLocalPlayer LocalPlayer,D
 				if (Array[i].Camp != LocalPlayer.Camp) { EnemyNum++; };
 				
 			}
-			IniTargetCoor.x = Array[index_Player_LowestDistance].Head_x;
-			IniTargetCoor.y = Array[index_Player_LowestDistance].Head_y;
-			IniTargetCoor.z = Array[index_Player_LowestDistance].Head_z;
-			if (EnemyNum == 0) { index_Player_LowestDistance = -1; IniTargetCoor.x = 0; IniTargetCoor.y = 0;IniTargetCoor.z = 0;};
+			                        
+			//AutoAim::UpAngleData(IniSelfVeiwAngleTarget, Localplayer.Angle_H, Localplayer.Angle_V, Localplayer.Head_x, Localplayer.Head_y, Localplayer.Head_z, IniTargetCoor.x, IniTargetCoor.y, IniTargetCoor.z);
 			
-			return index_Player_LowestDistance;
+			if (EnemyNum == 0) { index_Player_LowestDistance = -1; IniTarget.HorizontalAngle = 0; IniTarget.VerticalAngle = 0; };
+			
+			return Array[index_Player_LowestDistance].Ini_Index;
 		}
 		break;
 	}
