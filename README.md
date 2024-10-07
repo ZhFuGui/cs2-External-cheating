@@ -25,13 +25,14 @@ This project is designed to implement external reading and writing functionality
 - **Update Details**: Optimized various code structures for improved performance
 
 #### Maintenance Status
-This project will not be updated in the near future, and the current version will not be adapted to future changes. Nonetheless, the code and implementations within this project may still serve as a valuable reference. Developers are encouraged to use and customize as needed.
+As of *October 7, 2024*, this project will not be updated in the near future, and the current version will not be adapted to future changes. Nonetheless, the code and implementations within this project may still serve as a valuable reference. Developers are encouraged to use and customize as needed.
 
 ---
 
 <div align="center" style="font-size: 1.5em; font-weight: bold;">🌐 简体中文 🌐</div>
 
 ---
+
 # 项目介绍
 该项目旨在实现CS2的外部读写功能，提供多种辅助功能，包括位置报点、热能透视以及模拟鼠标操作自瞄功能。**请注意**，此版本仅供学习参考和功能研究使用。
 
@@ -52,4 +53,4 @@ This project will not be updated in the near future, and the current version wil
 - **更新内容**：优化若干代码结构
 
 #### 维护状态说明
-本项目短期内将不再更新，当前版本不再适配未来可能的变动。尽管如此，本项目的代码和实现仍具有参考价值，开发者可根据需要进行自定义和扩展。请按需取用。
+截止至*2024年10月7日*，本项目短期内将不再更新，当前版本不再适配未来可能的变动。尽管如此，本项目的代码和实现仍具有参考价值，开发者可根据需要进行自定义和扩展。请按需取用。
