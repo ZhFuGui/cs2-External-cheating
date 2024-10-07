@@ -20,7 +20,13 @@
 #### 维护状态说明
 本项目短期内将不再更新，当前版本不再适配未来可能的变动。尽管如此，本项目的代码和实现仍具有参考价值，开发者可根据需要进行自定义和扩展。请按需取用。
 
- # Project Overview
+---
+
+<div align="center" style="font-size: 1.5em; font-weight: bold;">🌐 English Version 🌐</div>
+
+---
+
+# Project Overview
 This project is designed to implement external reading and writing functionality for CS2, providing several auxiliary features, including position reporting, thermal vision, and simulated mouse-controlled auto-aim. **Please note** that this version is intended solely for educational reference and research purposes.
 
 ## Feature List
