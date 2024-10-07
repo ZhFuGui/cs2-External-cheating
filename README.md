@@ -14,33 +14,30 @@
 
 # 版本更新与维护状态
 
-#### 版本：v1.0.0.1 
-- **更新内容**：优化了自瞄逻辑，增强稳定性和准确性
+#### 版本：v1.0.0.2 
+- **更新内容**：优化若干代码结构
 
 #### 维护状态说明
 本项目短期内将不再更新，当前版本不再适配未来可能的变动。尽管如此，本项目的代码和实现仍具有参考价值，开发者可根据需要进行自定义和扩展。请按需取用。
 
- 
- # Project introduction
-    About cs2 external read and write. Functions are: position report point, thermal perspective and simulated mouse operation. 
-    
-    Self-knowing that the programming level is particularly low, and the code is extremely non-standard. 
-    
-    Sincerely wish for EveryGusTeachers' appraisal!
- 
- 
-# Function description
- 
-     F1 Broadcast enemy position
+ # Project Overview
+This project is designed to implement external reading and writing functionality for CS2, providing several auxiliary features, including position reporting, thermal vision, and simulated mouse-controlled auto-aim. **Please note** that this version is intended solely for educational reference and research purposes.
 
-     F2 Self-aim
+## Feature List
+- **Position Reporting**: Retrieves and reports target positions in real-time.
+- **Thermal Vision**: When enabled, displays targets through a thermal imaging effect.
+- **Simulated Auto-Aim**: Enables auto-aim by simulating mouse movement.
 
-     F3 Wallhacking-Xray
-     
- 
-# Version content update
-###### v1.0.0.1: 
-    1.Optimize the aiming logic
- 
- 
+# Usage Instructions
 
+- **F1**: Enable/Disable Thermal Vision
+- **F2**: Enable/Disable Auto-Aim
+- **F3**: Enable/Disable Position Reporting
+
+# Version Updates and Maintenance Status
+
+#### Version: v1.0.0.2 
+- **Update Details**: Optimized various code structures for improved performance
+
+#### Maintenance Status
+This project will not be updated in the near future, and the current version will not be adapted to future changes. Nonetheless, the code and implementations within this project may still serve as a valuable reference. Developers are encouraged to use and customize as needed.
