@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cmath>
-#define MATH_PI 3.1415926
+#define MATH_PI 3.141592653589793
 namespace AutoAim {
     struct Target
     {
@@ -19,7 +19,7 @@ namespace AutoAim {
         double HorizontalAngle;
         double VerticalAngle;
         Target() {
-            this->X_Target = -1.1111;
+            this->X_Target = 5.0316;
             this->Y_Target = -1.1111;
             this->Z_Target = -1.1111;
             this->HorizontalAngle = -1.1111;
@@ -27,24 +27,20 @@ namespace AutoAim {
         };
     };
 
-    float dX, dY, dZ, dL = 0; double dHorizontalAngle, TargetHorizontalAngle , TargetVerticalAngle = 0; long long NextAddress; long long NextNextAddress;
+    float dX, dY, dZ, dL = 0; double dHorizontalAngle, TargetHorizontalAngle , TargetVerticalAngle = 0; long long NextAddress_UpTargetData; long long NextNextAddress_UpTargetData;
     void UpTargetData(Target& IniTarget,  int i)  {
-
-        ReadProcessMemory(GameProcess, (void*)(Localplayer_Address), &NextAddress, 8, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextAddress + X_HEAD_Offset), &IniTarget.X_Self_Head, 4, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextAddress + Y_HEAD_Offset), &IniTarget.Y_Self_Head, 4, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextAddress + Z_HEAD_Offset), &IniTarget.Z_Self_Head, 4, 0);
-        //ReadProcessMemory(GameProcess, (void*)((long long)Engine2ModuleAddress + Engine2_View.HorizontalAngle), &IniTarget.SelfHorizontalAngle, 4, 0);
-        //ReadProcessMemory(GameProcess, (void*)((long long)Engine2ModuleAddress + Engine2_View.VerticalAngle), &IniTarget.SelfVerticalAngle, 4, 0);
-        if (1) {
-            ReadProcessMemory(GameProcess, (void*)(NextAddress + ANGLE_Horizontal_Offset), &IniTarget.SelfHorizontalAngle, 4, 0);
-            ReadProcessMemory(GameProcess, (void*)(NextAddress + ANGLE_Vertical_Offset), &IniTarget.SelfVerticalAngle, 4, 0);
-        };
-        ReadProcessMemory(GameProcess, (void*)((long long)ClientModuleAddress + NEW_LIST_PLAYER_Offset), &NextAddress, 8, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextAddress + (i * 0x8)), &NextNextAddress, 8, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextNextAddress + X_HEAD_Offset), &IniTarget.X_Target, 4, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextNextAddress + Y_HEAD_Offset), &IniTarget.Y_Target, 4, 0);
-        ReadProcessMemory(GameProcess, (void*)(NextNextAddress + Z_HEAD_Offset), &IniTarget.Z_Target, 4, 0);
+        
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)((uintptr_t)ModuleInfo.ClientModuleAddress+Offset::ClientDLL::LocalPlayer::Address), &NextAddress_UpTargetData, 8, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextAddress_UpTargetData + Offset::ClientDLL::Player::X_Head), &IniTarget.X_Self_Head, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextAddress_UpTargetData + Offset::ClientDLL::Player::Y_Head), &IniTarget.Y_Self_Head, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextAddress_UpTargetData + Offset::ClientDLL::Player::Z_Head), &IniTarget.Z_Self_Head, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)((uintptr_t)ModuleInfo.Engine2ModuleAddress + Offset::Engine2DLL::ViewAngles::HorizontalAngle), &IniTarget.SelfHorizontalAngle, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)((uintptr_t)ModuleInfo.Engine2ModuleAddress + Offset::Engine2DLL::ViewAngles::VerticalAngle), &IniTarget.SelfVerticalAngle, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)((uintptr_t)ModuleInfo.ClientModuleAddress + Offset::ClientDLL::PlayerList::Address), &NextAddress_UpTargetData, 8, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextAddress_UpTargetData + (i * 0x8)), &NextNextAddress_UpTargetData, 8, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextNextAddress_UpTargetData + Offset::ClientDLL::Player::X_Head), &IniTarget.X_Target, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextNextAddress_UpTargetData + Offset::ClientDLL::Player::Y_Head), &IniTarget.Y_Target, 4, 0);
+        ReadProcessMemory(GameProcessInfo.GameProcess, (LPVOID)(NextNextAddress_UpTargetData + Offset::ClientDLL::Player::Z_Head), &IniTarget.Z_Target, 4, 0);
 
 
         dX = IniTarget.X_Target - IniTarget.X_Self_Head; dY = IniTarget.Y_Target - IniTarget.Y_Self_Head; dZ = IniTarget.Z_Self_Head - IniTarget.Z_Target; dL = pow((pow(dX, 2) + pow(dY, 2)), 0.5);

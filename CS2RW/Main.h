@@ -47,8 +47,7 @@ HWND Enemy08_Distance_Edit_hwnd;
 HWND Enemy09_Distance_Edit_hwnd;
 HWND Enemy10_Distance_Edit_hwnd;
 
-//游戏是否打开线程函数
-void WINAPI GetExeStatus();
+
 HANDLE GetExeStatus_handle=0;
 DWORD GetExeStatus_ThreadId =0;
 BOOL GetExeStatus_switch=TRUE;
@@ -57,18 +56,18 @@ BOOL GameStatus = FALSE;
 
 //地图地址
 //游戏状态线程函数
-GameStatusInfo GameStatusInfoS;
+
 HANDLE GetGameModelStatus_handle = 0;
 DWORD GetGameModelStatus_ThreadId = 0;
 LPVOID CurrentMap_Address=0;
-void WINAPI GetGameModelStatus();
+
 int PeopleMultiple = 1;
 DWORD CurrentMapStatus=0;
 //获得人物列表线程函数
 DWORD WINAPI GetPlayerList();
 
 //结构体
-Player player; Player EnemyArray[10]; Player AllyArray[10]; Player AllPlayerArray[19]; Player InitialPlayer;
+Player player; Player EnemyArray[10]; Player AllyArray[10];  Player InitialPlayer;
 int EnemyNum; int AllyNum; int AllPlayerNum;
 //报点线程
 DWORD WINAPI ReportPositions();
@@ -80,7 +79,7 @@ int ReportPositionHeight = 0;
 BOOL IFCS2FocalPoint = FALSE;
 std::string FocWinTitle;
 //自瞄相关
-DWORD WINAPI Auto_Aim()noexcept;
+DWORD WINAPI Auto_Aim();
 BOOL Auto_Aim_Stop = FALSE;
 HANDLE Auto_Aim_handle;
 DWORD Auto_Aim_Model = AimByAngle;
@@ -102,7 +101,7 @@ BOOL temp = 0;
 
 
 //测试线程
-DWORD WINAPI test()noexcept;
+DWORD WINAPI test();
 HANDLE test_handle;
 
 
@@ -122,12 +121,5 @@ HANDLE test_handle;
 
 //调用重置函数==========================================================================
 void ReSetVariableValue() {
-	GameStatus = FALSE;
-	GameProcess = 0;
-	ClientModuleAddress = 0;
-	Engine2ModuleAddress = 0;
-	MatchmakingModuleAddress = 0;
-	CurrentMap_Address = 0;
-	Localplayer_Address = 0;
 };
 int IOI = 0;

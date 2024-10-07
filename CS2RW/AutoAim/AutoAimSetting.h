@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 #include <regex>
-#include "./Define/VK_Value.h"
+#include "../KeyBoard/VK_Value.h"
 
 #define 头部 0x01
 #define 脖子 0x02
@@ -59,12 +59,12 @@ namespace AutoAim{
         }
         return result;
     }
-    struct AutoAim GetUserInI(AutoAim AutoAimSetting) {
+    void GetUserInI(AutoAim &AutoAimSetting) {
 
         std::ifstream inputFile("Setting.ini");
 
         if (!inputFile.is_open()) {
-            return AutoAimSetting;
+            return;
         }
 
         std::string line; BOOL 是否配置节点头 = 0; std::string 等号左边; std::string 等号右边; size_t equals_pos; std::string 键 = ""; std::string 值 = "";
@@ -154,6 +154,6 @@ namespace AutoAim{
 
         inputFile.close();
 
-        return AutoAimSetting;
+        return;
     };
 }
