@@ -25,7 +25,7 @@ This project is designed to implement external reading and writing functionality
 - **Update Details**: Optimized various code structures for improved performance
 
 #### Maintenance Status
-As of *October 7, 2024*, this project will not be updated in the near future, and the current version will not be adapted to future changes. Nonetheless, the code and implementations within this project may still serve as a valuable reference. Developers are encouraged to use and customize as needed.
+As of *October 13, 2024*, after being reminded by enthusiastic readers, it was found that the latest submitted file lacked necessary modules. Since the author is busy with his studies, he cannot update it immediately. He will choose a suitable time in the future to solve your worries. At the same time, you are also welcome to help fix it!
 
 ---
 
@@ -53,4 +53,4 @@ As of *October 7, 2024*, this project will not be updated in the near future, an
 - **更新内容**：优化若干代码结构
 
 #### 维护状态说明
-截止至*2024年10月7日*，本项目短期内将不再更新，当前版本不再适配未来可能的变动。尽管如此，本项目的代码和实现仍具有参考价值，开发者可根据需要进行自定义和扩展。请按需取用。
+截止至*2024年10月13日*，经过热心读者提醒，发现最新提交的文件缺少必要的模块。由于作者劳于学业，无法即时更新，未来将挑选合适时间为各位解忧。同时也欢迎各位大佬帮助修复！
