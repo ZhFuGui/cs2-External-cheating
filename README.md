@@ -1,1 +1,1 @@
-new version will be
+The new version will be released in late April.
